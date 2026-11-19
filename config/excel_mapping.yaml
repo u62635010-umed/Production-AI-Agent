@@ -1,0 +1,69 @@
+# Workbook inspected with OpenPyXL; the supplied production_sheet.xlsx has
+# two empty sheets (Quality and production_summary), so it has no existing
+# report cells. The attached paper form defines the logical row/column schema
+# below. Confirmed measurements are stored as one row per hour or shift total.
+workbook: Templates/production_sheet.xlsx
+destination_strategy: production_history
+preserve_existing_sheets:
+  - Quality
+  - production_summary
+history_sheet: Production Data
+summary_sheet: Production Summary
+charts_sheet: Charts
+audit_sheet: Production Audit
+form_layout:
+  title: DAILY PRODUCTION REPORT - HPDC
+  general_fields:
+    - MACHINE ID
+    - DATE
+    - COMPONENT NAME
+    - NO. OF CAVITY
+    - TARGET
+    - OPERATOR NAME
+  shifts:
+    1: "07:00 AM to 03:30 PM"
+    2: "03:30 PM to 11:00 PM"
+    3: "11:00 PM to 07:00 AM"
+  hourly_row_numbers: [1, 2, 3, 4, 5, 6, 7, 8]
+  hourly_fields:
+    - Shot Count
+    - Total Shot
+    - OK Shot
+    - Rej. Shot
+    - Type of Rej.
+    - Type of BD
+    - BD/no. of min
+  shift_fields:
+    - Heat No.
+    - TOTAL row
+    - Remarks
+    - Opt. Sign (Checked By)
+    - Shift I/C Sign (Verified By)
+  printed_reference_tables:
+    - Type of Rejection
+    - Breakdown Codes
+    # Use as code descriptions only; never import as production rows.
+report_field_mapping:
+  production_date: Production Data.Production Date  # DATE
+  machine_id: Production Data.Machine ID
+  component_name: Production Data.Component Name
+  number_of_cavities: Production Data.Number of Cavities
+  target: Production Data.Target
+  operator_name: Production Data.Operator Name
+  shift_number: Production Data.Shift Number
+  shift_time_range: Production Data.Shift Time Range
+  shifts[].heat_number: Production Data.Shift Heat No.
+  shifts[].remarks: Production Data.Shift Remarks
+  shifts[].operator_signature: Production Data.Opt. Sign (Checked By)
+  shifts[].shift_ic_signature: Production Data.Shift I/C Sign (Verified By)
+  records[].record_type: Production Data.Row Type  # hourly or shift_total
+  records[].hour_number: Production Data.Hour Row (1-8)
+  records[].shot_counter: Production Data.Shot Count
+  records[].total_shots: Production Data.Total Shot
+  records[].ok_shots: Production Data.OK Shot
+  records[].rejected_shots: Production Data.Rej. Shot
+  records[].type_of_rejection: Production Data.Type of Rej.
+  records[].rejection_code: Production Data.Rejection Code
+  records[].type_of_breakdown: Production Data.Type of BD
+  records[].breakdown_code: Production Data.Breakdown Code
+  records[].breakdown_minutes: Production Data.BD/no. of min

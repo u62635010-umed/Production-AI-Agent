@@ -1,0 +1,34 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python environments and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+cache/
+.tox/
+
+# Runtime output and uploaded production photographs/data
+Output/
+data_uploads/
+*.log
+*.backup.xlsx
+
+# Keep only the clean, empty workbook template; exclude local workbooks
+Templates/*.xlsx
+Templates/*.xlsm
+!Templates/production_sheet.template.xlsx
+
+# Local editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+~$*
