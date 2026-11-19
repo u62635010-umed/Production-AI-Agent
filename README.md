@@ -1,6 +1,6 @@
 #  Production AI Agent
 
-A Streamlit application that extracts information from handwritten High Pressure Die Casting (HPDC) production reports, lets an operator review and correct the results, and writes confirmed records to an Excel workbook.
+A Streamlit application that extracts information from handwritten  production reports, lets an operator review and correct the results, and writes confirmed records to an Excel workbook.
 
 ## What it does
 
